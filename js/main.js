@@ -18,48 +18,50 @@
 * 09.Owl Carousel
 * 10.Contact Form
 ------------------------------------------------------------------- */
+// $(function () {
+//     $('[data-toggle="popover"]').popover()
+// })
 
-
-$(document).ready(function() {
+$(document).ready(function () {
 
     "use strict";
 
     // Call all ready functions
     fotor_preloader(),
-    fotor_wowJs(),
-    fotor_navbarMenu(),
-    fotor_resumeTab(),
-    fotor_counterUp(),
-    fotor_scrollIt(),
-    fotor_magnificPopup(),
-    fotor_isotopeGallery(),
-    fotor_owlCarousel(),
-    fotor_contactForm();
+        fotor_wowJs(),
+        fotor_navbarMenu(),
+        fotor_resumeTab(),
+        fotor_counterUp(),
+        fotor_scrollIt(),
+        fotor_magnificPopup(),
+        fotor_isotopeGallery(),
+        fotor_owlCarousel(),
+        fotor_contactForm();
 
-    $(document).contextmenu(function() {
+    $(document).contextmenu(function () {
         return false;
     });
 
-    $(document).on("keydown",window,function(a){
-        if(a.which == 123)
-        return false;
+    $(document).on("keydown", window, function (a) {
+        if (a.which == 123)
+            return false;
     });
 
-    document.onkeydown = function(e) {
-        if (e.ctrlKey && 
-            (e.keyCode === 67 || 
-            e.keyCode === 86 || 
-            e.keyCode === 85 || 
-            e.keyCode === 115 || 
-            e.keyCode === 19 || 
-            e.keyCode === 117)) {
+    document.onkeydown = function (e) {
+        if (e.ctrlKey &&
+            (e.keyCode === 67 ||
+                e.keyCode === 86 ||
+                e.keyCode === 85 ||
+                e.keyCode === 115 ||
+                e.keyCode === 19 ||
+                e.keyCode === 117)) {
             alert('not allowed');
             return false;
         } else {
             return true;
         }
     };
-    
+
 });
 
 /*  ---------------------------------------------------
@@ -70,12 +72,12 @@ function fotor_preloader() {
     "use-strict";
 
     // Preloader Effect
-    var loaderWrap         = $('#preloader'),
-        loaderInner        = $('#loader');
+    var loaderWrap = $('#preloader'),
+        loaderInner = $('#loader');
 
-    $(window).ready(function(){
-        loaderInner.fadeOut(); 
-        loaderWrap.delay(350).fadeOut('slow'); 
+    $(window).ready(function () {
+        loaderInner.fadeOut();
+        loaderWrap.delay(350).fadeOut('slow');
     });
 }
 
@@ -83,7 +85,7 @@ function fotor_preloader() {
     02.Wow Js
     --------------------------------------------------- */
 
-function fotor_wowJs(){
+function fotor_wowJs() {
     "use-strict";
 
     new WOW().init();
@@ -96,28 +98,28 @@ function fotor_navbarMenu() {
     "use-strict";
 
     // Variables
-    let header              = $('.header'),
-        logoTransparent     = $(".logo-transparent"),
-        scrollTopBtn        = $(".scroll-top-btn"),
-        navbarLink          = $('.menu-link'),
-        logoNormal          = $(".logo-normal"),
-        windowWidth         = $(window).innerWidth(),
-        scrollTop           = $(window).scrollTop(),
-        $dropdown           = $(".dropdown"),
-        $dropdownToggle     = $(".dropdown-toggle"),
-        $dropdownMenu       = $(".dropdown-menu"),
-        showClass           = "show";
+    let header = $('.header'),
+        logoTransparent = $(".logo-transparent"),
+        scrollTopBtn = $(".scroll-top-btn"),
+        navbarLink = $('.menu-link'),
+        logoNormal = $(".logo-normal"),
+        windowWidth = $(window).innerWidth(),
+        scrollTop = $(window).scrollTop(),
+        $dropdown = $(".dropdown"),
+        $dropdownToggle = $(".dropdown-toggle"),
+        $dropdownMenu = $(".dropdown-menu"),
+        showClass = "show";
 
     // When Window On Scroll
-    $(window).on('scroll',function(){
-        let scrollTop       = $(this).scrollTop();
+    $(window).on('scroll', function () {
+        let scrollTop = $(this).scrollTop();
 
-        if(scrollTop > 100 ) {
+        if (scrollTop > 100) {
             header.addClass('header-shrink');
             scrollTopBtn.addClass('active');
             logoTransparent.hide();
             logoNormal.show();
-        }else {
+        } else {
             header.removeClass('header-shrink');
             scrollTopBtn.removeClass('active');
             logoTransparent.show();
@@ -126,12 +128,12 @@ function fotor_navbarMenu() {
     });
 
     // The same process is done without page scroll to prevent errors.
-    if(scrollTop > 100 ) {
+    if (scrollTop > 100) {
         header.addClass('header-shrink');
         scrollTopBtn.addClass('active');
         logoTransparent.hide();
         logoNormal.show();
-    }else {
+    } else {
         header.removeClass('header-shrink');
         scrollTopBtn.removeClass('active');
         logoTransparent.show();
@@ -139,59 +141,59 @@ function fotor_navbarMenu() {
     }
 
     // Window On Resize Hover Dropdown
-    $(window).on("resize", function() {
-        let windowWidth  = $(this).innerWidth();
+    $(window).on("resize", function () {
+        let windowWidth = $(this).innerWidth();
 
-        if ( windowWidth > 991 ) {
+        if (windowWidth > 991) {
             $dropdown.hover(
-                function() {
-                    let hasShowClass  =  $(this).hasClass(showClass);
-                    if( hasShowClass!==true ){
+                function () {
+                    let hasShowClass = $(this).hasClass(showClass);
+                    if (hasShowClass !== true) {
                         $(this).addClass(showClass);
                         $(this).find($dropdownToggle).attr("aria-expanded", "true");
                         $(this).find($dropdownMenu).addClass(showClass);
                     }
                 },
-                function() {
+                function () {
                     $(this).removeClass(showClass);
                     $(this).find($dropdownToggle).attr("aria-expanded", "false");
                     $(this).find($dropdownMenu).removeClass(showClass);
                 }
             );
-        }else {
+        } else {
             $dropdown.off("mouseenter mouseleave");
             header.find('.main-menu').collapse('hide');
         }
     });
     // The same process is done without page scroll to prevent errors.
-    if (windowWidth > 991 ) {
+    if (windowWidth > 991) {
         $dropdown.hover(
-            function() {
+            function () {
                 const $this = $(this);
 
-                var hasShowClass  = $this.hasClass(showClass);
+                var hasShowClass = $this.hasClass(showClass);
 
-                if(hasShowClass!==true){
+                if (hasShowClass !== true) {
                     $this.addClass(showClass);
                     $this.find($dropdownToggle).attr("aria-expanded", "true");
                     $this.find($dropdownMenu).addClass(showClass);
                 }
             },
-            function() {
+            function () {
                 const $this = $(this);
                 $this.removeClass(showClass);
                 $this.find($dropdownToggle).attr("aria-expanded", "false");
                 $this.find($dropdownMenu).removeClass(showClass);
             }
         );
-    }else {
+    } else {
         $dropdown.off("mouseenter mouseleave");
     }
 
-    
-    navbarLink.on('click', function(){
+
+    navbarLink.on('click', function () {
         $('.navbar-collapse').collapse('hide');
-    }); 
+    });
 
     // Scroll Spy
     $('body').scrollspy({
@@ -207,10 +209,10 @@ function fotor_resumeTab() {
     "use-strict";
 
     // Variables 
-    var resumeTabItem   = $(".resume-tab-item"),
-        resumeContent   = $(".resume-tab-content");
+    var resumeTabItem = $(".resume-tab-item"),
+        resumeContent = $(".resume-tab-content");
 
-    resumeTabItem.on("click",function(){
+    resumeTabItem.on("click", function () {
         let tabIndex = $(this).index();
         resumeTabItem.removeClass("active");
         $(this).addClass("active");
@@ -286,18 +288,18 @@ function fotor_isotopeGallery() {
     "use-strict";
 
     // Variables 
-    var portfolioFilterBtn     = $('.portfolio-filter > a'),
-        portfolioBtnActive     = $('.portfolio-filter .current'),
-        portfolioGalleryWrap   = $('#masonaryGallery');
+    var portfolioFilterBtn = $('.portfolio-filter > a'),
+        portfolioBtnActive = $('.portfolio-filter .current'),
+        portfolioGalleryWrap = $('#masonaryGallery');
 
     // Porfolio Filtering Click Events
-    portfolioFilterBtn.on("click", function() {
+    portfolioFilterBtn.on("click", function () {
         portfolioFilterBtn.removeClass('current');
         $(this).addClass('current');
     });
 
     // Portfolio Masonary Gallery
-    portfolioGalleryWrap.imagesLoaded(function() {
+    portfolioGalleryWrap.imagesLoaded(function () {
         var grid = $('.gallery-masonary').isotope({
             itemSelector: '.glry-item',
             percentPosition: true,
@@ -307,7 +309,7 @@ function fotor_isotopeGallery() {
         });
 
         // filter items on button click
-        portfolioFilterBtn.on('click', function() {
+        portfolioFilterBtn.on('click', function () {
             var filterValue = $(this).attr('data-gallery-filter');
             grid.isotope({
                 filter: filterValue
@@ -323,11 +325,11 @@ function fotor_owlCarousel() {
     "use-strict";
 
     // Variables 
-    var myTeamSlider        = $('.my-team-slider'),
-        testimonialsSlider  = $('.testimonials-carousel'),
-        portfolioImgSlider  = $('.portfolio-img-slider'),
-        blogSlider          = $('.blog-slider'),
-        navArrowClass       = ['<span class="fa fa-angle-left"></span>','<span class="fa fa-angle-right"></span>'];
+    var myTeamSlider = $('.my-team-slider'),
+        testimonialsSlider = $('.testimonials-carousel'),
+        portfolioImgSlider = $('.portfolio-img-slider'),
+        blogSlider = $('.blog-slider'),
+        navArrowClass = ['<span class="fa fa-angle-left"></span>', '<span class="fa fa-angle-right"></span>'];
 
     // My Team Slider
     myTeamSlider.owlCarousel({
@@ -343,7 +345,7 @@ function fotor_owlCarousel() {
                 items: 1
             },
             600: {
-                items:2
+                items: 2
             },
             1000: {
                 items: 3
@@ -365,7 +367,7 @@ function fotor_owlCarousel() {
                 items: 1
             },
             600: {
-                items:1
+                items: 1
             },
             1000: {
                 items: 1
@@ -405,8 +407,8 @@ function fotor_owlCarousel() {
         autoplayHoverPause: true,
         navText: navArrowClass,
         dots: false,
-        stagePadding:0,
-        smartSpeed:700,
+        stagePadding: 0,
+        smartSpeed: 700,
         responsive: {
             0: {
                 items: 1
@@ -427,7 +429,7 @@ function fotor_owlCarousel() {
 function fotor_contactForm() {
     "use-strict";
 
-    $("#contactForm").on("submit",function(event) {
+    $("#contactForm").on("submit", function (event) {
 
         // E-Mail Validation Function 
         function validateEmail(email) {
@@ -436,46 +438,46 @@ function fotor_contactForm() {
         }
 
         //  Variables 
-        var $this           = $(this),
-            $formActionURL  = $this.attr("action"),
-            name            = $("#contactName").val().trim(),
-            email           = $("#contactEmail").val().trim(),
-            subject         = $("#contactSubject").val().trim(),
-            message         = $("#contactMessage").val().trim(),
-            validateEmail   = validateEmail(email);
+        var $this = $(this),
+            $formActionURL = $this.attr("action"),
+            name = $("#contactName").val().trim(),
+            email = $("#contactEmail").val().trim(),
+            subject = $("#contactSubject").val().trim(),
+            message = $("#contactMessage").val().trim(),
+            validateEmail = validateEmail(email);
 
         // Check empty fields
-        if(name===''||email===''||message===''||subject===''){
-            if($('div.empty-form').css("display") == "none"){
+        if (name === '' || email === '' || message === '' || subject === '') {
+            if ($('div.empty-form').css("display") == "none") {
                 $('div.empty-form').stop().slideDown(500).delay(2000).slideUp(500);
-            }else {
+            } else {
                 return false;
             }
-        }else if (!validateEmail===true) {
-            if($('div.email-invalid').css("display") == "none"){
+        } else if (!validateEmail === true) {
+            if ($('div.email-invalid').css("display") == "none") {
                 $('div.email-invalid').stop().slideDown(500).delay(2000).slideUp(500);
-            }else {
+            } else {
                 return false;
             }
-        }else {
+        } else {
             // Once the information entered is verified, the mail form is sent. 
             $this.find(':submit').append('<span class="fas fa-spinner fa-pulse ml-3"></span>');
-            $("#contactForm").find(':submit').attr('disabled','true');
+            $("#contactForm").find(':submit').attr('disabled', 'true');
 
             $.ajax({
                 url: $formActionURL,
                 data: {
-                    contact_name:name,
-                    contact_email:email,
-                    contact_subject:subject,
-                    contact_message:message
+                    contact_name: name,
+                    contact_email: email,
+                    contact_subject: subject,
+                    contact_message: message
                 },
                 type: "POST",
-                success: function(response) {
+                success: function (response) {
                     $this.find(':submit').find("span").fadeOut();
-                    $("#contactForm")[0].reset();   
+                    $("#contactForm")[0].reset();
                     $("#contactForm").find(':submit').removeAttr('disabled');
-                    $(".success-form").html(response).slideDown(500).delay(5000).slideUp(500);  
+                    $(".success-form").html(response).slideDown(500).delay(5000).slideUp(500);
                 }
             });
         }

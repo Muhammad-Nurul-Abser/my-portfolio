@@ -48,6 +48,49 @@
 /* 01.Base                               
 /* ---------------------------------------------------------------- */
 
+
+.tap {
+  font-size: 10px;
+  color: #636b72;
+}
+
+.teamImg{
+  width: 100%!important;
+  height: 22rem;
+}
+
+.Margin {
+  margin-bottom: 0px !important;
+}
+
+.modal-body {
+  background-color: #f1f1f1;
+  min-height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.modal-header {
+  background-color: #eb7944;
+}
+
+.modal-title {
+  color: white;
+}
+
+.modal-content {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 3px solid #eb7944;
+}
+.modal-logo{
+  width: 100%;
+  padding-top: 2rem;
+}
+
 /* custom scroll bar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -1173,12 +1216,14 @@ p {
     width: 50%;
     /* margin: auto; */
   }
+
   .hero-banner .button-group-center {
     /* display: none; */
-    top: 30.5rem!important;
+    top: 30.5rem !important;
     left: 77%;
   }
-  .about-tilt-img{
+
+  .about-tilt-img {
     margin-left: 1rem;
   }
 }
